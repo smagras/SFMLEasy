@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<PMML version="3.0"
+  xmlns="http://www.dmg.org/PMML-3-0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema_instance" >
+  
+<compilers>
+	<compiler>
+		<name>MinGW</name>
+		<example>C:\\MinGW</example>
+		<bin>\bin\mingw32-g++.exe</bin>
+	</compiler>
+	<compiler>
+		<name>Visual</name>
+		<example>C:\\Visual</example>
+		<bin>https://github.com/LaurentGomila/SFML/archive/master.zip</bin>
+	</compiler>
+</compilers>
+</PMML>

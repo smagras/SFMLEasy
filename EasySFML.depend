@@ -1,0 +1,199 @@
+# depslib dependency file v1.0
+1407869249 source:c:\users\steve\desktop\projet\easysfml\main.cpp
+	"include/EasySFML.hpp"
+
+1407869249 source:c:\users\steve\desktop\projet\easysfml\include\easysfml.cpp
+	"EasySFML.hpp"
+
+1407843453 c:\users\steve\desktop\projet\easysfml\include\easysfml.hpp
+	"../stdafx.hpp"
+
+1407782595 c:\users\steve\desktop\projet\easysfml\\stdafx.hpp
+	<iostream>
+	<windows.h>
+
+1407874447 c:\users\steve\desktop\projet\easysfml\stdafx.hpp
+	<stdio.h>
+	<iostream>
+	<fstream>
+	<windows.h>
+	"lib/xmlParser/xmlParser/xmlParser.h"
+	<string>
+	<stdio.h>
+	<curl/curl.h>
+	<curl/types.h>
+	<curl/easy.h>
+	<libgen.h>
+	<stdio.h>
+
+1407872420 source:c:\users\steve\desktop\projet\easysfml\stdafx.cpp
+	"stdafx.hpp"
+
+1368995078 c:\users\steve\desktop\projet\easysfml\lib\xmlparser\xmlparser\xmlparser.h
+	<stdlib.h>
+	<tchar.h>
+	<wchar.h>
+
+1370166884 source:c:\users\steve\desktop\projet\easysfml\lib\xmlparser\xmlparser\xmlparser.cpp
+	"xmlParser.h"
+	<Windows.h>
+	<memory.h>
+	<assert.h>
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<widec.h>
+	<wctype.h>
+	<widec.h>
+
+1387231356 c:\users\steve\desktop\projet\easysfml\lib\libcurl\include\curl\curl.h
+	"curlver.h"
+	"curlbuild.h"
+	"curlrules.h"
+	<stdio.h>
+	<limits.h>
+	<osreldate.h>
+	<sys/types.h>
+	<time.h>
+	<winsock2.h>
+	<ws2tcpip.h>
+	<sys/select.h>
+	<sys/socket.h>
+	<sys/time.h>
+	<support/SupportDefs.h>
+	"easy.h"
+	"multi.h"
+	"typecheck-gcc.h"
+
+1387266692 c:\users\steve\desktop\projet\easysfml\lib\libcurl\include\curl\curlver.h
+
+1378678276 c:\users\steve\desktop\projet\easysfml\lib\libcurl\include\curl\curlrules.h
+
+1378678276 c:\users\steve\desktop\projet\easysfml\lib\libcurl\include\curl\easy.h
+
+1382561734 c:\users\steve\desktop\projet\easysfml\lib\libcurl\include\curl\multi.h
+	"curl.h"
+
+1387231356 c:\users\steve\desktop\projet\easysfml\lib\libcurl\include\curl\typecheck-gcc.h
+
+1198539750 c:\users\steve\desktop\projet\easysfml\lib\libcurl\include\curl\types.h
+
+1387266692 c:\users\steve\desktop\projet\easysfml\lib\libcurl\include\curl\curlbuild.h
+	<sys/types.h>
+	<sys/socket.h>
+
+1407872401 c:\users\steve\desktop\projet\easysfml\\lib\libcurl\include\curl\curl.h
+	"curlver.h"
+	"curlbuild.h"
+	"curlrules.h"
+	<stdio.h>
+	<limits.h>
+	<types.h>
+	<time.h>
+	<sys/types.h>
+	<time.h>
+	<winsock2.h>
+	<ws2tcpip.h>
+	<sys/select.h>
+	<sys/socket.h>
+	<sys/time.h>
+	<sys/types.h>
+	<support/SupportDefs.h>
+	"easy.h"
+	"multi.h"
+	"typecheck-gcc.h"
+
+1232359236 c:\users\steve\desktop\projet\easysfml\\lib\libcurl\include\curl\curlver.h
+
+1232359236 c:\users\steve\desktop\projet\easysfml\\lib\libcurl\include\curl\curlbuild.h
+	<sys/types.h>
+	<stdint.h>
+
+1219658558 c:\users\steve\desktop\projet\easysfml\\lib\libcurl\include\curl\curlrules.h
+
+1210628608 c:\users\steve\desktop\projet\easysfml\\lib\libcurl\include\curl\easy.h
+
+1211286136 c:\users\steve\desktop\projet\easysfml\\lib\libcurl\include\curl\multi.h
+	"curl.h"
+
+1232089824 c:\users\steve\desktop\projet\easysfml\\lib\libcurl\include\curl\typecheck-gcc.h
+
+1408747907 source:c:\users\steve\desktop\projet\c++\easysfml\include\easysfml.cpp
+	"EasySFML.hpp"
+
+1407843453 c:\users\steve\desktop\projet\c++\easysfml\include\easysfml.hpp
+	"../stdafx.hpp"
+
+1407874447 c:\users\steve\desktop\projet\c++\easysfml\stdafx.hpp
+	<stdio.h>
+	<iostream>
+	<fstream>
+	<windows.h>
+	"lib/xmlParser/xmlParser/xmlParser.h"
+	<string>
+	<stdio.h>
+	<curl/curl.h>
+	<curl/types.h>
+	<curl/easy.h>
+	<libgen.h>
+	<stdio.h>
+
+1368995078 c:\users\steve\desktop\projet\c++\easysfml\lib\xmlparser\xmlparser\xmlparser.h
+	<stdlib.h>
+	<tchar.h>
+	<wchar.h>
+
+1387231356 c:\users\steve\desktop\projet\c++\easysfml\lib\libcurl\include\curl\curl.h
+	"curlver.h"
+	"curlbuild.h"
+	"curlrules.h"
+	<stdio.h>
+	<limits.h>
+	<osreldate.h>
+	<sys/types.h>
+	<time.h>
+	<winsock2.h>
+	<ws2tcpip.h>
+	<sys/select.h>
+	<sys/socket.h>
+	<sys/time.h>
+	<support/SupportDefs.h>
+	"easy.h"
+	"multi.h"
+	"typecheck-gcc.h"
+
+1387266692 c:\users\steve\desktop\projet\c++\easysfml\lib\libcurl\include\curl\curlver.h
+
+1387266692 c:\users\steve\desktop\projet\c++\easysfml\lib\libcurl\include\curl\curlbuild.h
+	<sys/types.h>
+	<sys/socket.h>
+
+1378678276 c:\users\steve\desktop\projet\c++\easysfml\lib\libcurl\include\curl\curlrules.h
+
+1378678276 c:\users\steve\desktop\projet\c++\easysfml\lib\libcurl\include\curl\easy.h
+
+1382561734 c:\users\steve\desktop\projet\c++\easysfml\lib\libcurl\include\curl\multi.h
+	"curl.h"
+
+1387231356 c:\users\steve\desktop\projet\c++\easysfml\lib\libcurl\include\curl\typecheck-gcc.h
+
+1370166884 source:c:\users\steve\desktop\projet\c++\easysfml\lib\xmlparser\xmlparser\xmlparser.cpp
+	"xmlParser.h"
+	<Windows.h>
+	<memory.h>
+	<assert.h>
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<widec.h>
+	<wctype.h>
+	<widec.h>
+
+1407869249 source:c:\users\steve\desktop\projet\c++\easysfml\main.cpp
+	"include/EasySFML.hpp"
+
+1407872420 source:c:\users\steve\desktop\projet\c++\easysfml\stdafx.cpp
+	"stdafx.hpp"
+
+1198539750 c:\users\steve\desktop\projet\c++\easysfml\lib\libcurl\include\curl\types.h
+
