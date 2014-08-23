@@ -16,10 +16,15 @@ class EasySFML
         void run();
         void parse(string s);
         void config();
+        void install();
 
+        void save();
+        void load();
 
-    protected:
     private:
+        string _compilerpath;
+        string _compilertype;
+        string _cmakepath;
 };
 
 #endif // EASYSFML_H

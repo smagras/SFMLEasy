@@ -14,12 +14,42 @@ void EasySFML::parse(string s){
 
     if (s == "easy config"){
         this->config();
-
+    }else if(s == "easy install"){
+        this->install();
     }else{
         SetColor(RED);
         cout << "Unreconized command" << endl << endl;
         SetColor(WHITE);
     }
+
+}
+
+void EasySFML::install(){
+    cout << "eee" << endl;
+
+}
+
+void EasySFML::load(){
+
+    XMLNode confxml = XMLNode::openFileHelper("conf/conf.xml","PMML");
+    _cmakepath = confxml.getChildNode("cmakepath").getText();
+    _compilerpath = confxml.getChildNode("compilerpath").getText();
+    _compilertype = confxml.getChildNode("compilertype").getText();
+    cout <<"cm "<< _cmakepath << endl;
+    cout <<"comp "<< _compilerpath << endl;
+    cout <<"ty "<< _compilertype << endl;
+}
+
+void EasySFML::save(){
+
+    XMLNode confxml = XMLNode::openFileHelper("conf/conf.xml","PMML");
+    XMLNode confxml_cmakepath = confxml.getChildNode("cmakepath");
+    confxml_cmakepath.updateText(_cmakepath.c_str());
+    XMLNode confxml_compilerpath = confxml.getChildNode("compilerpath");
+    confxml_compilerpath.updateText(_compilerpath.c_str());
+    XMLNode confxml_compilertype = confxml.getChildNode("compilertype");
+    confxml_compilertype.updateText(_compilertype.c_str());
+    confxml.writeToFile("conf/conf.xml","PMML");
 
 }
 
@@ -56,6 +86,9 @@ void EasySFML::config(){
             cout << "ERROR: Impossible to choose compiler '" << compiler << "' ."<< endl << endl;
             SetColor(WHITE);
         }
+        else{
+            _compilertype = compiler;
+        }
 
         // Compiler
         if(ok){
@@ -77,6 +110,8 @@ void EasySFML::config(){
                 SetColor(RED);
                 cout << "ERROR: Impossible to find '"<< compExe <<"' ." << endl << endl;
                 SetColor(WHITE);
+            }else{
+                _compilerpath = compiler;
             }
         }
 
@@ -117,11 +152,15 @@ void EasySFML::config(){
                 cout << "ERROR: Impossible to find '"<< cmakeExe <<"' ." << endl << endl;
                 SetColor(WHITE);
             }
+            else{
+                _cmakepath = cmake;
+            }
         }
 
         // End
         if (ok){
             SetColor(DARKGREEN);
+            save();
             cout << "Configuration is succesfully done." << endl;
             SetColor(WHITE);
         }
@@ -137,7 +176,7 @@ void EasySFML::run(){
     cout << "+ Version : "<< VERSION <<"                                                 +" << endl;
     cout << "+ ------------------------------------------------------------- +" << endl << endl;
 
-
+    load();
 
     XMLNode xMainNode=XMLNode::openFileHelper("conf/version.xml","PMML");
     XMLNode versions=xMainNode.getChildNode("versions");
