@@ -118,13 +118,13 @@
 
 1232089824 c:\users\steve\desktop\projet\easysfml\\lib\libcurl\include\curl\typecheck-gcc.h
 
-1408747907 source:c:\users\steve\desktop\projet\c++\easysfml\include\easysfml.cpp
+1408755242 source:c:\users\steve\desktop\projet\c++\easysfml\include\easysfml.cpp
 	"EasySFML.hpp"
 
 1407843453 c:\users\steve\desktop\projet\c++\easysfml\include\easysfml.hpp
 	"../stdafx.hpp"
 
-1407874447 c:\users\steve\desktop\projet\c++\easysfml\stdafx.hpp
+1408754958 c:\users\steve\desktop\projet\c++\easysfml\stdafx.hpp
 	<stdio.h>
 	<iostream>
 	<fstream>
@@ -137,6 +137,8 @@
 	<curl/easy.h>
 	<libgen.h>
 	<stdio.h>
+	"zip.h"
+	"unzip.h"
 
 1368995078 c:\users\steve\desktop\projet\c++\easysfml\lib\xmlparser\xmlparser\xmlparser.h
 	<stdlib.h>
@@ -192,8 +194,47 @@
 1407869249 source:c:\users\steve\desktop\projet\c++\easysfml\main.cpp
 	"include/EasySFML.hpp"
 
-1407872420 source:c:\users\steve\desktop\projet\c++\easysfml\stdafx.cpp
+1408754990 source:c:\users\steve\desktop\projet\c++\easysfml\stdafx.cpp
 	"stdafx.hpp"
 
 1198539750 c:\users\steve\desktop\projet\c++\easysfml\lib\libcurl\include\curl\types.h
+
+1271704368 c:\users\steve\desktop\projet\c++\easysfml\lib\zlib-1.2.5\zlib.h
+	"zconf.h"
+
+1271581086 c:\users\steve\desktop\projet\c++\easysfml\lib\zlib-1.2.5\zconf.h
+	<windows.h>
+	<sys/types.h>
+	<unistd.h>
+	<unixio.h>
+
+1367195030 c:\users\steve\desktop\projet\c++\easysfml\lib\zlib-1.2.8\zlib.h
+	"zconf.h"
+
+1367189832 c:\users\steve\desktop\projet\c++\easysfml\lib\zlib-1.2.8\zconf.h
+	<windows.h>
+	<limits.h>
+	<sys/types.h>
+	<stdarg.h>
+	<stddef.h>
+	<unistd.h>
+	<unixio.h>
+
+1122505742 c:\users\steve\desktop\projet\c++\easysfml\lib\zip_utils_src\zip.h
+
+1122506480 c:\users\steve\desktop\projet\c++\easysfml\lib\zip_utils_src\unzip.h
+
+1122536206 source:c:\users\steve\desktop\projet\c++\easysfml\lib\zip_utils_src\unzip.cpp
+	<windows.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<tchar.h>
+	"unzip.h"
+
+1122481068 source:c:\users\steve\desktop\projet\c++\easysfml\lib\zip_utils_src\zip.cpp
+	<windows.h>
+	<stdio.h>
+	<tchar.h>
+	"zip.h"
 

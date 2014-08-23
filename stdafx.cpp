@@ -18,6 +18,19 @@ bool fileExist (const std::string& name) {
     }
 }
 
+void extract_zip(string path,string zip){
+    HZIP hz = OpenZip(zip.c_str(),0);
+    SetUnzipBaseDir(hz,_T(path.c_str()));
+    ZIPENTRY ze; GetZipItem(hz,-1,&ze); int numitems=ze.index;
+    for (int zi=0; zi<numitems; zi++)
+    {
+        ZIPENTRY ze; GetZipItem(hz,zi,&ze);
+        UnzipItem(hz, zi, ze.name);
+    }
+    CloseZip(hz);
+
+}
+
 
 size_t writeData(void* ptr, const size_t size, const size_t nmemb, FILE* stream)
 {

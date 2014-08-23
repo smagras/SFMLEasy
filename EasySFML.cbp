@@ -33,6 +33,7 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 			<Add directory="lib/libcurl/include" />
+			<Add directory="lib/zip_utils_src" />
 		</Compiler>
 		<ResourceCompiler>
 			<Add directory="lib/libcurl/bin" />
@@ -40,11 +41,16 @@
 		<Linker>
 			<Add library="curldll" />
 			<Add directory="lib/libcurl/lib" />
+			<Add directory="lib/libcurl/bin" />
 		</Linker>
 		<Unit filename="include/EasySFML.cpp" />
 		<Unit filename="include/EasySFML.hpp" />
 		<Unit filename="lib/xmlParser/xmlParser/xmlParser.cpp" />
 		<Unit filename="lib/xmlParser/xmlParser/xmlParser.h" />
+		<Unit filename="lib/zip_utils_src/unzip.cpp" />
+		<Unit filename="lib/zip_utils_src/unzip.h" />
+		<Unit filename="lib/zip_utils_src/zip.cpp" />
+		<Unit filename="lib/zip_utils_src/zip.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="stdafx.cpp" />
 		<Unit filename="stdafx.hpp" />

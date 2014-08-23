@@ -70,6 +70,7 @@ void EasySFML::config(){
             cout << endl;
 
 
+
             string compExe = compiler+xcompiler.getChildNode("bin").getText();
             if (!fileExist(compExe)){
                 ok = false;
@@ -88,6 +89,26 @@ void EasySFML::config(){
             cout << "Cmake path >> " ;
             getline(cin, cmake);
             cout << endl;
+
+            if (cmake == ""){
+                XMLNode confxml = XMLNode::openFileHelper("conf/conf.xml","PMML");
+                XMLNode xcmake = confxml.getChildNode("cmake");
+
+                if (!fileExist(xcmake.getChildNode("zip").getText())){
+                    cout << "Download: "<< xcmake.getChildNode("url").getText() << "..." << endl;
+                    get_http_data(xcmake.getChildNode("url").getText(),xcmake.getChildNode("zip").getText());
+                }
+
+                if (!fileExist(xcmake.getChildNode("src").getText())){
+                    cout << "Unzip: "<< xcmake.getChildNode("zip").getText() << "..." << endl;
+                    extract_zip("download/cmake",xcmake.getChildNode("zip").getText());
+                    cmake = xcmake.getChildNode("path").getText();
+                }
+                else{
+                    cmake = xcmake.getChildNode("path").getText();
+                }
+
+            }
 
             string cmakeExe = cmake+"\\bin\\cmake.exe";
             if (!fileExist(cmakeExe)){
@@ -116,7 +137,6 @@ void EasySFML::run(){
     cout << "+ Version : "<< VERSION <<"                                                 +" << endl;
     cout << "+ ------------------------------------------------------------- +" << endl << endl;
 
-    get_http_data("http://lapeniche.net/wp-content/uploads/2013/12/Chat.jpg","download/chat.jpg");
 
 
     XMLNode xMainNode=XMLNode::openFileHelper("conf/version.xml","PMML");
