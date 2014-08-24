@@ -1,0 +1,10 @@
+--------------------------------------------
+ HELP
+--------------------------------------------
+
+SFML Easy can compile easily and quicky the sfml library.
+Here you can see differents commands to use:
+
+1 ) easy update : Get the last configuration for SFMLEasy on internet.
+1 ) easy config : Confugurate required parameters.
+2 ) easy install: Install any version you want.

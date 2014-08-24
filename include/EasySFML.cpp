@@ -17,6 +17,8 @@ void EasySFML::update(){
     get_http_data("http://magrassteve.atspace.eu/EasySFML/cmake.xml","conf/cmake.xml");
     cout << "download: " << "http://magrassteve.atspace.eu/EasySFML/version.xml" << "..." << endl;
     get_http_data("http://magrassteve.atspace.eu/EasySFML/version.xml","conf/version.xml");
+    cout << "download: " << "http://magrassteve.atspace.eu/EasySFML/help.txt" << "..." << endl;
+    get_http_data("http://magrassteve.atspace.eu/EasySFML/help.txt","conf/help.txt");
 }
 
 void EasySFML::parse(string s){
@@ -29,12 +31,29 @@ void EasySFML::parse(string s){
         this->showConfig();
     }else if(s == "easy update"){
         this->update();
+    }else if(s == "help"){
+        this->help();
     }else{
         SetColor(RED);
         cout << "Unreconized command" << endl << endl;
         SetColor(WHITE);
     }
 
+}
+
+void EasySFML::help(){
+    cout << endl;
+    string STRING;
+	ifstream infile;
+	infile.open ("conf/help.txt");
+    while(!infile.eof()) // To get you all the lines.
+    {
+        getline(infile,STRING); // Saves the line in STRING.
+        cout<<STRING << endl; // Prints our STRING.
+    }
+	infile.close();
+
+    cout << endl << endl;
 }
 
 void EasySFML::install(){
@@ -384,7 +403,7 @@ void EasySFML::run(){
     load();
 
 
-
+    help();
 
 
     while(1){
