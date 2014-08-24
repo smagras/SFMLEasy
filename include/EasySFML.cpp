@@ -119,19 +119,19 @@ void EasySFML::install(){
             string mainpath = GetPath();
             string compiler = getCompiler();
             string src_sfml = xversion.getChildNode("src").getText();
-
-
+            cout << "aaaaa " << mainpath << endl;
+            cout << "aaaaa " << src_sfml << endl;
             command = "";
             command += "cd " + src_sfml + " && ";
             command += "set PATH=\""+_compilerpath +"bin/\";%PATH%" + " && ";
             command += "set PATH=\""+_cmakepath +"bin/\";%PATH%" + " && ";
-            command += "cmake -G \""+compiler+"\" -D CMAKE_BUILD_TYPE=Release -D BUILD_SHARED_LIBS=TRUE " + mainpath+"/"+src_sfml + " && ";
+            command += "cmake -G \""+compiler+"\" -D CMAKE_BUILD_TYPE=Release -D BUILD_SHARED_LIBS=TRUE \"" + mainpath+"/"+src_sfml + "\" && ";
             command += "mingw32-make &&";
-            command += "cmake -G \""+compiler+"\" -D CMAKE_BUILD_TYPE=Debug -D BUILD_SHARED_LIBS=TRUE " + mainpath+"/"+src_sfml + " && ";
+            command += "cmake -G \""+compiler+"\" -D CMAKE_BUILD_TYPE=Debug -D BUILD_SHARED_LIBS=TRUE \"" + mainpath+"/"+src_sfml + "\" && ";
             command += "mingw32-make && ";
-            command += "cmake -G \""+compiler+"\" -D CMAKE_BUILD_TYPE=Release -D BUILD_SHARED_LIBS=FALSE " + mainpath+"/"+src_sfml + " && ";
+            command += "cmake -G \""+compiler+"\" -D CMAKE_BUILD_TYPE=Release -D BUILD_SHARED_LIBS=FALSE \"" + mainpath+"/"+src_sfml + "\" && ";
             command += "mingw32-make && ";
-            command += "cmake -G \""+compiler+"\" -D CMAKE_BUILD_TYPE=Debug -D BUILD_SHARED_LIBS=FALSE " + mainpath+"/"+src_sfml + " && ";
+            command += "cmake -G \""+compiler+"\" -D CMAKE_BUILD_TYPE=Debug -D BUILD_SHARED_LIBS=FALSE \"" + mainpath+"/"+src_sfml + "\" && ";
             command += "mingw32-make";
             //cout << command << endl;
             system(command.c_str());
