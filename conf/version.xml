@@ -6,11 +6,17 @@
 <versions>
 	<version>
 		<name>SFML 2.1</name>
-		<url>https://github.com/LaurentGomila/SFML/archive/master.zip</url>
+		<url>http://sfml-dev.org/download/sfml/2.1/SFML-2.1-sources.zip</url>
+		<path>download/versions/SFML_21</path>
+		<zip>download/versions/SFML_21/SFML-2.1-sources.zip</zip>
+		<src>download/versions/SFML_21/SFML-2.1</src>
 	</version>
 	<version>
 		<name>SFML 2.0</name>
-		<url>https://github.com/LaurentGomila/SFML/archive/master.zip</url>
+		<url>http://sfml-dev.org/download/sfml/2.1/SFML-2.1-sources.zip</url>
+		<path>download/versions/SFML_20</path>
+		<zip>download/versions/SFML_20/SFML-2.1-sources.zip</zip>
+		<src>download/versions/SFML_21/SFML-2.0</src>
 	</version>
 </versions>
 </PMML>

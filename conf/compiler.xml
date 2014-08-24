@@ -8,11 +8,13 @@
 		<name>MinGW</name>
 		<example>C:\\MinGW</example>
 		<bin>\bin\mingw32-g++.exe</bin>
+		<makefile>MinGW Makefiles</makefile>
 	</compiler>
 	<compiler>
 		<name>Visual</name>
 		<example>C:\\Visual</example>
 		<bin>https://github.com/LaurentGomila/SFML/archive/master.zip</bin>
+		<makefile>MinGW Makefiles</makefile>
 	</compiler>
 </compilers>
 </PMML>

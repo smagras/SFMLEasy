@@ -7,7 +7,7 @@
 		<zip>download/cmake/cmake-2.8.12.2-win32-x86.zip</zip>
 		<src>download/cmake/cmake-2.8.12.2-win32-x86/bin/cmake.exe</src>
 	</cmake>
-	<cmakepath>download/cmake/cmake-2.8.12.2-win32-x86</cmakepath>
-	<compilerpath>c:/MinGw</compilerpath>
+	<cmakepath>C:/Users/STEVE/Desktop/Projet/C++/EasySFML/download/cmake/cmake-2.8.12.2-win32-x86/</cmakepath>
+	<compilerpath>C:/MinGW</compilerpath>
 	<compilertype>0</compilertype>
 </PMML>

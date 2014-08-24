@@ -118,13 +118,13 @@
 
 1232089824 c:\users\steve\desktop\projet\easysfml\\lib\libcurl\include\curl\typecheck-gcc.h
 
-1408805215 source:c:\users\steve\desktop\projet\c++\easysfml\include\easysfml.cpp
+1408838305 source:c:\users\steve\desktop\projet\c++\easysfml\include\easysfml.cpp
 	"EasySFML.hpp"
 
-1408805215 c:\users\steve\desktop\projet\c++\easysfml\include\easysfml.hpp
+1408826041 c:\users\steve\desktop\projet\c++\easysfml\include\easysfml.hpp
 	"../stdafx.hpp"
 
-1408754958 c:\users\steve\desktop\projet\c++\easysfml\stdafx.hpp
+1408827628 c:\users\steve\desktop\projet\c++\easysfml\stdafx.hpp
 	<stdio.h>
 	<iostream>
 	<fstream>
@@ -139,6 +139,7 @@
 	<stdio.h>
 	"zip.h"
 	"unzip.h"
+	<direct.h>
 
 1368995078 c:\users\steve\desktop\projet\c++\easysfml\lib\xmlparser\xmlparser\xmlparser.h
 	<stdlib.h>
@@ -194,7 +195,7 @@
 1407869249 source:c:\users\steve\desktop\projet\c++\easysfml\main.cpp
 	"include/EasySFML.hpp"
 
-1408754990 source:c:\users\steve\desktop\projet\c++\easysfml\stdafx.cpp
+1408829253 source:c:\users\steve\desktop\projet\c++\easysfml\stdafx.cpp
 	"stdafx.hpp"
 
 1198539750 c:\users\steve\desktop\projet\c++\easysfml\lib\libcurl\include\curl\types.h

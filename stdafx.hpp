@@ -20,6 +20,7 @@
 #include <stdio.h>
 #include "zip.h"
 #include "unzip.h"
+#include <direct.h>
 
 using namespace std;
 
@@ -34,5 +35,15 @@ size_t writeData(void* ptr, const size_t size, const size_t nmemb, FILE* stream)
 bool get_http_data(string server, string file);
 
 void extract_zip(string path,string zip);
+
+bool dirExist(const std::string& dirName_in);
+
+
+std::string GetPath();
+
+string clean_path(string path);
+
+std::string ReplaceString(std::string subject, const std::string& search,
+                          const std::string& replace);
 
 #endif // STDAFX_H
