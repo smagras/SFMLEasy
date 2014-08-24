@@ -6,8 +6,8 @@ int main()
 {
 
 
-    EasySFML * application = new EasySFML();
-    application->run();
+    EasySFML application;
+    application.run();
 
     return false;
 }
