@@ -9,7 +9,16 @@ EasySFML::~EasySFML()
 {
     //dtor
 }
-//easy config "C:\Program Files (x86)\CMake" "C:\MiGw" 2.1
+
+void EasySFML::update(){
+    cout << "download: " << "http://magrassteve.atspace.eu/EasySFML/compiler.xml" << "..." << endl;
+    get_http_data("http://magrassteve.atspace.eu/EasySFML/compiler.xml","conf/compiler.xml");
+    cout << "download: " << "http://magrassteve.atspace.eu/EasySFML/cmake.xml" << "..." << endl;
+    get_http_data("http://magrassteve.atspace.eu/EasySFML/cmake.xml","conf/cmake.xml");
+    cout << "download: " << "http://magrassteve.atspace.eu/EasySFML/version.xml" << "..." << endl;
+    get_http_data("http://magrassteve.atspace.eu/EasySFML/version.xml","conf/version.xml");
+}
+
 void EasySFML::parse(string s){
 
     if (s == "easy config"){
@@ -18,7 +27,8 @@ void EasySFML::parse(string s){
         this->install();
     }else if(s == "easy config -show"){
         this->showConfig();
-
+    }else if(s == "easy update"){
+        this->update();
     }else{
         SetColor(RED);
         cout << "Unreconized command" << endl << endl;
@@ -29,122 +39,135 @@ void EasySFML::parse(string s){
 
 void EasySFML::install(){
 
-    SetColor(DARKGREEN);
-
-    string version;
-    bool ok=true;
-    string finalpath;
-    string command = "";
-
-    // Final Path
-    if(ok){
+    if (checkConfig()){
 
         SetColor(DARKGREEN);
-        cout << "# Enter where you want to install sfml:" << endl;
-        cout << "# ex: C:/" << endl;
-        SetColor(WHITE);
-        cout << "SFML path >> " ;
-        getline(cin, finalpath);
-        cout << endl;
 
-        if (finalpath != ""){
-            finalpath = clean_path(finalpath);
-            if (!dirExist(finalpath)){
+        string version;
+        bool ok=true;
+        string finalpath;
+        string command = "";
+
+        // Final Path
+        if(ok){
+
+            SetColor(DARKGREEN);
+            cout << "# Enter where you want to install sfml:" << endl;
+            cout << "# ex: C:/" << endl;
+            SetColor(WHITE);
+            cout << "SFML path >> " ;
+            getline(cin, finalpath);
+            cout << endl;
+
+            if (finalpath != ""){
+                finalpath = clean_path(finalpath);
+                if (!dirExist(finalpath)){
+                    SetColor(RED);
+                    cout << "ERROR: Impossible to find folder '" << finalpath << "' ."<< endl << endl;
+                    SetColor(WHITE);
+                    ok = false;
+                }
+            }
+            else{
                 SetColor(RED);
                 cout << "ERROR: Impossible to find folder '" << finalpath << "' ."<< endl << endl;
                 SetColor(WHITE);
                 ok = false;
             }
         }
-        else{
-            SetColor(RED);
-            cout << "ERROR: Impossible to find folder '" << finalpath << "' ."<< endl << endl;
-            SetColor(WHITE);
-            ok = false;
-        }
-    }
 
-    if (ok){
-        SetColor(DARKGREEN);
-        cout << "# Enter the sfml version to install." << endl;
-        cout << "# ex: 1" << endl;
+        if (ok){
+            SetColor(DARKGREEN);
+            cout << "# Enter the sfml version to install." << endl;
+            cout << "# ex: 1" << endl;
 
-        XMLNode xMainNode=XMLNode::openFileHelper("conf/version.xml","PMML");
-        XMLNode xversions=xMainNode.getChildNode("versions");
-        int n=xversions.nChildNode("version");
-        for (int i = 0; i < n;i++ ){
-            XMLNode xversion =xversions.getChildNode("version",i);
-            cout << i << " : " << xversion.getChildNode("name").getText() << endl;
-        }
-
-        SetColor(WHITE);
-        cout << "Version >> " ;
-        getline(cin, version);
-        cout << endl;
-
-        int i = atoi(version.c_str());
-        if (!(i >= 0 && i < n) || version == ""){
-            ok = false;
-            SetColor(RED);
-            cout << "ERROR: Impossible to choose version '" << version << "' ."<< endl << endl;
-            SetColor(WHITE);
-        }
-        else{
-           // _compilertype = version;
-           int i = atoi(version.c_str());
-            XMLNode xversion =xversions.getChildNode("version",i);
-            string sfmlPath = xversion.getChildNode("path").getText();
-            if (!dirExist(sfmlPath)){
-                cout << "Create new dir: '"<< sfmlPath <<"'" << endl;
-                if (!dirExist("download/versions/")) mkdir("download/versions/");
-                mkdir(sfmlPath.c_str());
-
+            XMLNode xMainNode=XMLNode::openFileHelper("conf/version.xml","PMML");
+            XMLNode xversions=xMainNode.getChildNode("versions");
+            int n=xversions.nChildNode("version");
+            for (int i = 0; i < n;i++ ){
+                XMLNode xversion =xversions.getChildNode("version",i);
+                cout << i << " : " << xversion.getChildNode("name").getText() << endl;
             }
 
-            if (!fileExist(xversion.getChildNode("zip").getText())){
-                cout << "Download: "<< xversion.getChildNode("url").getText() << "..." << endl;
-                get_http_data(xversion.getChildNode("url").getText(),xversion.getChildNode("zip").getText());
+            SetColor(WHITE);
+            cout << "Version >> " ;
+            getline(cin, version);
+            cout << endl;
+
+            int i = atoi(version.c_str());
+            if (!(i >= 0 && i < n) || version == ""){
+                ok = false;
+                SetColor(RED);
+                cout << "ERROR: Impossible to choose version '" << version << "' ."<< endl << endl;
+                SetColor(WHITE);
             }
+            else{
+               // _compilertype = version;
+               int i = atoi(version.c_str());
+                XMLNode xversion =xversions.getChildNode("version",i);
+                string sfmlPath = xversion.getChildNode("path").getText();
+                if (!dirExist(sfmlPath)){
+                    cout << "Create new dir: '"<< sfmlPath <<"'" << endl;
+                    if (!dirExist("download/versions/")) mkdir("download/versions/");
+                    mkdir(sfmlPath.c_str());
+
+                }
+
+                if (!fileExist(xversion.getChildNode("zip").getText())){
+                    cout << "Download: "<< xversion.getChildNode("url").getText() << "..." << endl;
+                    get_http_data(xversion.getChildNode("url").getText(),xversion.getChildNode("zip").getText());
+                }
 
 
 
-            cout << "Delete: "<< xversion.getChildNode("src").getText() << "..." << endl;
-            command = xversion.getChildNode("src").getText();
-            command = "rd /s /q \""+command+"\"";
-            system( command.c_str() );
-            cout << "Unzip: "<< xversion.getChildNode("zip").getText() << "..." << endl;
-            extract_zip(xversion.getChildNode("path").getText(),xversion.getChildNode("zip").getText());
+                cout << "Delete: "<< xversion.getChildNode("src").getText() << "..." << endl;
+                command = xversion.getChildNode("src").getText();
+                command = "rd /s /q \""+command+"\"";
+                system( command.c_str() );
+                cout << "Unzip: "<< xversion.getChildNode("zip").getText() << "..." << endl;
+                extract_zip(xversion.getChildNode("path").getText(),xversion.getChildNode("zip").getText());
 
-            // Compilation
-            string mainpath = GetPath();
-            string compiler = getCompiler();
-            string src_sfml = xversion.getChildNode("src").getText();
-            cout << "aaaaa " << mainpath << endl;
-            cout << "aaaaa " << src_sfml << endl;
-            command = "";
-            command += "cd " + src_sfml + " && ";
-            command += "set PATH=\""+_compilerpath +"bin/\";%PATH%" + " && ";
-            command += "set PATH=\""+_cmakepath +"bin/\";%PATH%" + " && ";
-            command += "cmake -G \""+compiler+"\" -D CMAKE_BUILD_TYPE=Release -D BUILD_SHARED_LIBS=TRUE \"" + mainpath+"/"+src_sfml + "\" && ";
-            command += "mingw32-make &&";
-            command += "cmake -G \""+compiler+"\" -D CMAKE_BUILD_TYPE=Debug -D BUILD_SHARED_LIBS=TRUE \"" + mainpath+"/"+src_sfml + "\" && ";
-            command += "mingw32-make && ";
-            command += "cmake -G \""+compiler+"\" -D CMAKE_BUILD_TYPE=Release -D BUILD_SHARED_LIBS=FALSE \"" + mainpath+"/"+src_sfml + "\" && ";
-            command += "mingw32-make && ";
-            command += "cmake -G \""+compiler+"\" -D CMAKE_BUILD_TYPE=Debug -D BUILD_SHARED_LIBS=FALSE \"" + mainpath+"/"+src_sfml + "\" && ";
-            command += "mingw32-make";
-            //cout << command << endl;
-            system(command.c_str());
+                // Compilation
+                string mainpath = GetPath();
+                string compiler = getCompiler();
+                string src_sfml = xversion.getChildNode("src").getText();
 
-            cout << "Finalize installation..." << endl;
-            command = xversion.getChildNode("name").getText();
-            command = "xcopy  \""+ mainpath+"/"+src_sfml +"\" \""+finalpath+"/"+command+"\" /s /e /y /i";
-            cout << command << endl;
-            system(command.c_str());
+                command = "";
+                command += "cd " + src_sfml + " && ";
+                command += "set PATH=\""+_compilerpath +"bin/\";%PATH%" + " && ";
+                command += "set PATH=\""+_cmakepath +"bin/\";%PATH%" + " && ";
+                command += "cmake -G \""+compiler+"\" -D CMAKE_BUILD_TYPE=Release -D BUILD_SHARED_LIBS=TRUE \"" + mainpath+"/"+src_sfml + "\" && ";
+                command += "mingw32-make &&";
+                command += "cmake -G \""+compiler+"\" -D CMAKE_BUILD_TYPE=Debug -D BUILD_SHARED_LIBS=TRUE \"" + mainpath+"/"+src_sfml + "\" && ";
+                command += "mingw32-make && ";
+                command += "cmake -G \""+compiler+"\" -D CMAKE_BUILD_TYPE=Release -D BUILD_SHARED_LIBS=FALSE \"" + mainpath+"/"+src_sfml + "\" && ";
+                command += "mingw32-make && ";
+                command += "cmake -G \""+compiler+"\" -D CMAKE_BUILD_TYPE=Debug -D BUILD_SHARED_LIBS=FALSE \"" + mainpath+"/"+src_sfml + "\" && ";
+                command += "mingw32-make";
+                //cout << command << endl;
+                int resCMD = system(command.c_str());
 
-            cout << endl << "Installation complete." << endl;
+                if (resCMD == 0 && errno == 0)
+                {
+                    cout << "Finalize installation..." << endl;
+                    command = xversion.getChildNode("name").getText();
+                    command = "xcopy  \""+ mainpath+"/"+src_sfml +"\" \""+finalpath+"/"+command+"\" /s /e /y /i";
+                    cout << command << endl;
+                    system(command.c_str());
 
+                    cout << endl << "Installation complete." << endl;
+                }
+                else{
+                    SetColor(RED);
+                    cout << "ERROR: Impossible to cmake or compile." << endl;
+                    SetColor(WHITE);
+                }
+
+
+
+            }
         }
+
     }
 
 
@@ -155,11 +178,23 @@ void EasySFML::load(){
     if (!dirExist("download")) mkdir("download");
     if (!dirExist("download/cmake/")) mkdir("download/cmake/");
     if (!dirExist("download/versions/")) mkdir("download/versions/");
+    if (!dirExist("download/conf/")) mkdir("download/conf/");
 
+    string confFile = "";
+    confFile += "<?xml version=\"1.0\" encoding=\"PMML\"?>";
+    confFile += "<PMML version=\"3.0\" xmlns=\"http://www.dmg.org/PMML-3-0\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema_instance\">";
+    confFile += "<cmakepath>undefined</cmakepath>";
+    confFile += "<compilerpath>undefined</compilerpath>";
+    confFile += "<compilertype>0</compilertype>";
+    confFile += "</PMML>";
+
+    if (!fileExist("conf/conf.xml")) createFile("conf/conf.xml",confFile);
     XMLNode confxml = XMLNode::openFileHelper("conf/conf.xml","PMML");
     _cmakepath = confxml.getChildNode("cmakepath").getText();
     _compilerpath = confxml.getChildNode("compilerpath").getText();
     _compilertype = confxml.getChildNode("compilertype").getText();
+
+
 }
 
 void EasySFML::save(){
@@ -173,6 +208,31 @@ void EasySFML::save(){
     confxml_compilertype.updateText(_compilertype.c_str());
     confxml.writeToFile("conf/conf.xml","PMML");
 
+}
+
+bool EasySFML::checkConfig(){
+
+    XMLNode xMainNode=XMLNode::openFileHelper("conf/compiler.xml","PMML");
+    XMLNode xcompilers=xMainNode.getChildNode("compilers");
+    int i = atoi(_compilertype.c_str());
+    XMLNode xcompiler =xcompilers.getChildNode("compiler",i);
+
+    bool ok = true;
+    if (!fileExist(_cmakepath+"bin/cmake.exe")){
+        ok = false;
+        SetColor(RED);
+        cout << "ERROR: Impossible to find cmake '"<< _cmakepath <<"' ." << endl ;
+        SetColor(WHITE);
+    }
+
+    if (!fileExist(_compilerpath+xcompiler.getChildNode("bin").getText())){
+        ok = false;
+        SetColor(RED);
+        cout << "ERROR: Impossible to find compiler '"<< _compilerpath <<"' ." << endl << endl;
+        SetColor(WHITE);
+    }
+
+    return ok;
 }
 
 string EasySFML::getCompiler(){
@@ -266,7 +326,7 @@ void EasySFML::config(){
 
             if (cmake == ""){
 
-                XMLNode confxml = XMLNode::openFileHelper("conf/conf.xml","PMML");
+                XMLNode confxml = XMLNode::openFileHelper("conf/cmake.xml","PMML");
                 XMLNode xcmake = confxml.getChildNode("cmake");
 
                 if (!fileExist(xcmake.getChildNode("zip").getText())){

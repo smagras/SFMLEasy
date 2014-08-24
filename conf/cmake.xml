@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="PMML"?>
+<PMML version="3.0" xmlns="http://www.dmg.org/PMML-3-0" xmlns:xsi="http://www.w3.org/2001/XMLSchema_instance">
+	
+<cmake>
+		
+	<name>cmake-2.8.12.2-win32-x86</name>
+		
+	<url>http://www.cmake.org/files/v2.8/cmake-2.8.12.2-win32-x86.zip</url>
+		
+	<path>download/cmake/cmake-2.8.12.2-win32-x86</path>
+		
+	<zip>download/cmake/cmake-2.8.12.2-win32-x86.zip</zip>
+		
+	<src>download/cmake/cmake-2.8.12.2-win32-x86/bin/cmake.exe</src>
+	
+</cmake>
+		
+
+</PMML>

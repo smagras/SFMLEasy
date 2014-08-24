@@ -3,20 +3,37 @@
   xmlns="http://www.dmg.org/PMML-3-0"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema_instance" >
   
+
 <versions>
-	<version>
-		<name>SFML 2.1</name>
-		<url>http://sfml-dev.org/download/sfml/2.1/SFML-2.1-sources.zip</url>
-		<path>download/versions/SFML_21</path>
-		<zip>download/versions/SFML_21/SFML-2.1-sources.zip</zip>
-		<src>download/versions/SFML_21/SFML-2.1</src>
-	</version>
-	<version>
-		<name>SFML 2.0</name>
-		<url>http://sfml-dev.org/download/sfml/2.1/SFML-2.1-sources.zip</url>
-		<path>download/versions/SFML_20</path>
-		<zip>download/versions/SFML_20/SFML-2.1-sources.zip</zip>
-		<src>download/versions/SFML_21/SFML-2.0</src>
-	</version>
+	
+<version>
+		
+	<name>SFML 2.1</name>
+		
+	<url>http://sfml-dev.org/download/sfml/2.1/SFML-2.1-sources.zip</url>
+		
+	<path>download/versions/SFML_21</path>
+		
+	<zip>download/versions/SFML_21/SFML-2.1-sources.zip</zip>
+		
+	<src>download/versions/SFML_21/SFML-2.1</src>
+	
+</version>
+	
+<version>
+		
+	<name>SFML 2.0</name>
+		
+	<url>http://sfml-dev.org/download/sfml/2.0/SFML-2.0-sources.zip</url>
+		
+	<path>download/versions/SFML_20</path>
+		
+	<zip>download/versions/SFML_20/SFML-2.0-sources.zip</zip>
+		
+	<src>download/versions/SFML_21/SFML-2.0</src>
+	
+</version>
+
 </versions>
+
 </PMML>

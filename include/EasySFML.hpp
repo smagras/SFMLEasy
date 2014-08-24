@@ -22,6 +22,8 @@ class EasySFML
         void load();
 
         void showConfig();
+        bool checkConfig();
+        void update();
 
         string getCompiler();
 

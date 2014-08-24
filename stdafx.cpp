@@ -70,6 +70,14 @@ string clean_path(string path){
     return res;
 }
 
+void createFile(string file,string content){
+    std::ofstream outfile (file.c_str());
+
+    outfile << content << std::endl;
+
+    outfile.close();
+}
+
 std::string ReplaceString(std::string subject, const std::string& search,
                           const std::string& replace) {
     size_t pos = 0;

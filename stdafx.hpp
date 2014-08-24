@@ -38,6 +38,8 @@ void extract_zip(string path,string zip);
 
 bool dirExist(const std::string& dirName_in);
 
+void createFile(string file,string content);
+
 
 std::string GetPath();
 
