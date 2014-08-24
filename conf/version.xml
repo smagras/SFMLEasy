@@ -30,7 +30,7 @@
 		
 	<zip>download/versions/SFML_20/SFML-2.0-sources.zip</zip>
 		
-	<src>download/versions/SFML_21/SFML-2.0</src>
+	<src>download/versions/SFML_20/SFML-2.0</src>
 	
 </version>
 
