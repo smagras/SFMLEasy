@@ -64,7 +64,10 @@ size_t writeData(void* ptr, const size_t size, const size_t nmemb, FILE* stream)
 }
 
 string clean_path(string path){
-    return ReplaceString(path,"\\","/");
+    string res = ReplaceString(path,"\\","/");
+    char lastChar = res.at( res.length() - 1 );
+    if(lastChar != '/') res += "/";
+    return res;
 }
 
 std::string ReplaceString(std::string subject, const std::string& search,

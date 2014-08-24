@@ -21,6 +21,8 @@ class EasySFML
         void save();
         void load();
 
+        void showConfig();
+
         string getCompiler();
 
     private:

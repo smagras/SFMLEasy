@@ -9,5 +9,5 @@ int main()
     EasySFML * application = new EasySFML();
     application->run();
 
-    return true;
+    return false;
 }
