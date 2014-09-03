@@ -3,12 +3,16 @@
 --------------------------------------------
 
 SFML Easy can compile easily and quicky the sfml library.
-Here you can see differents commands to use:
+Here you can see differents commands to use to recompile sfml:
 
 1 ) easy update : Get the last configurations for SFMLEasy on internet.
 2 ) easy config : Configurate required parameters.
 3 ) easy install : Install any version you want.
 
-Other commands
+You can also init a project to be ready to use:
+
+easy init codeblock : config your codeblock project for sfml. 
+
+Other commands:
 
 easy config -show : Show the actual configuration.
