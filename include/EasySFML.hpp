@@ -17,6 +17,7 @@ class EasySFML
         void parse(string s);
         void config();
         void install();
+        void initCB();
 
         void save();
         void load();

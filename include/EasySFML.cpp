@@ -10,6 +10,113 @@ EasySFML::~EasySFML()
     //dtor
 }
 
+void EasySFML::initCB(){
+
+    bool ok = true;
+    string sfmlpath = "";
+    string cbpath = "";
+
+    SetColor(DARKGREEN);
+    cout << "# Enter where is your sfml path:" << endl;
+    cout << "# ex: C:/SFML 2.1" << endl;
+    SetColor(WHITE);
+    cout << "SFML path >> " ;
+    getline(cin, sfmlpath);
+    cout << endl;
+//sfmlpath = "C:/Users/STEVE/Desktop/Cours/M1 2013-2014/SFML 2.1";
+    if (!dirExist(sfmlpath+"/include/SFML")){
+        SetColor(RED);
+        cout << "ERROR: Folder '" << sfmlpath << "' isn't SFML."<< endl << endl;
+        SetColor(WHITE);
+        ok = false;
+    }
+
+    if (ok){
+
+        SetColor(DARKGREEN);
+        cout << "# Enter where is your project file (codeblock):" << endl;
+        cout << "# ex: C:/MyCodeBlockProject/MyCodeBlockProject.cbp" << endl;
+        SetColor(WHITE);
+        cout << "Codeblock project >> " ;
+        getline(cin, cbpath);
+        cout << endl;
+  //      cbpath = "C:/Users/STEVE/Desktop/Projet/testouille/testouille.cbp";
+        if (!fileExist(cbpath)){
+            SetColor(RED);
+            cout << "ERROR: File '" << cbpath << "' dont exist."<< endl << endl;
+            SetColor(WHITE);
+            ok = false;
+        }
+
+
+    }
+
+    if (ok){
+
+        XMLNode xMainNode=XMLNode::openFileHelper(cbpath.c_str(),"CodeBlocks_project_file");
+        XMLNode xProject=xMainNode.getChildNode("Project");
+        XMLNode xBuild=xProject.getChildNode("Build");
+
+        // Debug
+        XMLNode xTarget= xBuild.getChildNode("Target",0);
+        if (xTarget.getChildNode("Linker").isEmpty ()) xTarget.addChild("Linker");
+        XMLNode xLinker=xTarget.getChildNode("Linker");
+
+
+
+        // On enleve les add sfml
+        /*int addDebug = xLinker.nChildNode();
+        for (int i = 0; i < addDebug ; i++){
+            //string tmp = xLinker.getChildNode("Add",i).getAttributeValue(0);
+            //if (tmp == "sfml-graphics-d"){
+                cout << "eeee  " <<xLinker.getChildNode("Add",i).getAttributeValue(0) << endl ;
+                xLinker.getChildNode("Add",i).deleteNodeContent();
+                Sleep(1000);
+            //}
+        }*/
+
+        xLinker.addChild("Add").addAttribute("library","sfml-graphics-d");
+        xLinker.addChild("Add").addAttribute("library","sfml-audio-d");
+        xLinker.addChild("Add").addAttribute("library","sfml-window-d");
+        xLinker.addChild("Add").addAttribute("library","sfml-network-d");
+        xLinker.addChild("Add").addAttribute("library","sfml-system-d");
+
+        xMainNode.writeToFile(cbpath.c_str(),"CodeBlocks_project_file");
+
+        // Realease
+        XMLNode xTargetR= xBuild.getChildNode("Target",1);
+        if (xTargetR.getChildNode("Linker").isEmpty ()) xTargetR.addChild("Linker");
+        XMLNode xLinkerR=xTargetR.getChildNode("Linker");
+
+        xLinkerR.addChild("Add").addAttribute("library","sfml-graphics");
+        xLinkerR.addChild("Add").addAttribute("library","sfml-audio");
+        xLinkerR.addChild("Add").addAttribute("library","sfml-window");
+        xLinkerR.addChild("Add").addAttribute("library","sfml-network");
+        xLinkerR.addChild("Add").addAttribute("library","sfml-system");
+
+
+
+        //Compiler
+        if (xProject.getChildNode("Compiler").isEmpty ()) xProject.addChild("Compiler");
+        XMLNode compiler= xProject.getChildNode("Compiler");
+        string compilerInclude = sfmlpath+"/include";
+        compiler.addChild("Add").addAttribute("directory",compilerInclude.c_str());
+
+        //Linker
+        if (xProject.getChildNode("Linker").isEmpty ()) xProject.addChild("Linker");
+        XMLNode linker= xProject.getChildNode("Linker");
+        string compilerLib = sfmlpath+"/lib";
+        linker.addChild("Add").addAttribute("directory",compilerLib.c_str());
+
+
+        // Ecriture
+        xMainNode.writeToFile(cbpath.c_str(),"CodeBlocks_project_file");
+
+    }
+    cout << "config project " << sfmlpath << endl;
+
+}
+
 void EasySFML::update(){
     cout << "download: " << "http://magrassteve.atspace.eu/EasySFML/compiler.xml" << "..." << endl;
     get_http_data("http://magrassteve.atspace.eu/EasySFML/compiler.xml","conf/compiler.xml");
@@ -33,6 +140,8 @@ void EasySFML::parse(string s){
         this->update();
     }else if(s == "help"){
         this->help();
+    }else if(s == "easy init codeblock"){
+        this->initCB();
     }else{
         SetColor(RED);
         cout << "Unreconized command" << endl << endl;
