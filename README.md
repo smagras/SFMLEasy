@@ -1,19 +1,17 @@
+<h2> SFMLEasy Guide </h2>
 
-This little command application is usefull for compil easily and quickly the SMFL.
 
-When you start the application for the first time you must configure all path necessaries.
+SFML Easy can compile easily and quicky the sfml library.<br>
+Here you can see differents commands to use:
 
-MinGW: Specify the path to your compiler
-Cmake: If you dont have just type "auto" and the application will download the application.
-SFML: Same think if you don't have master, just type "auto"
+1 ) <strong>easy update</strong> : Get the last configurations for SFMLEasy on internet.<br>
+2 ) <strong>easy config</strong>  : Configurate required parameters.<br>
+3 ) <strong>easy install</strong>  : Install any version you want.<br>
 
-And then when you have finish, just lauch the command:
-REM: My antivirus block me when i do that so, just disabled it for a moment if you have a problem.
+<h4>Other commands </h4>
 
-easy install
-And that ok, SFML is now installed.
+<strong>easy config -show</strong> : Show the actual configuration.<br>
 
-SFMLEasy keep you last config for path, so if you want to change just type:
+Other features will be add.
 
-easy config
-I hope this software could help you =)
+Thank for using.
